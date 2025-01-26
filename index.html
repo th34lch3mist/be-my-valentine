@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Be My Valentine</title>
+    <link rel="stylesheet" href="css/valentine.css" />
+  </head>
+  <body>
+    <div id="valentineQuestion"><b>Will you be my valentine 🥺🥺🥺🥺🥺 ?</b></div>
+    <button class="answerButton" onclick="location.href='thankyou.html'" id="yesButton">
+      Yes
+    </button>
+    <button class="answerButton" id="noButton"> Nai Jana ( tum ghatiya aadmi ho) </button>
+    <br />
+    <img src="please.png" height="498px" width="150px" alt="cat asking question" class="responsive" />
+
+    <script>
+      let noClickCount = 0;
+      const maxNoClicks = 5;
+      const messages = [
+        "Aww, please reconsider 🥺",
+        "Are you sure? 🥹",
+        "But I made this just for you! 🐾",
+        "My heart is breaking 💔",
+        "Come on, say yes! You’ll love it! 💌"
+      ];
+
+      document.getElementById("noButton").addEventListener("click", function () {
+        noClickCount++;
+
+        if (noClickCount <= maxNoClicks) {
+          alert(messages[noClickCount - 1]);
+        }
+
+        if (noClickCount === maxNoClicks) {
+          alert("Andhi ho kya bhai? sahi button click karo!");
+          const noButton = document.getElementById("noButton");
+          noButton.textContent = "Yes";
+          noButton.setAttribute("onclick", "location.href='thankyou.html'");
+          noButton.removeEventListener("click", arguments.callee);
+        }
+      });
+    </script>
+  </body>
+</html>
